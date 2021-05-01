@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# Start/stop hci
+#
+
+NAME=hciattach
+DAEMON="/usr/bin/$NAME"
+BAUDRATE=3000000
+DEVICE=/dev/ttyAMA0
+
+case "$1" in
+start)
+  echo "Starting $NAME..."
+  start-stop-daemon -S -b -x "$DAEMON" -n "$NAME" -- "$DEVICE" bcm43xx "$BAUDRATE" flow -
+  [ $? -eq 0 ] && echo "OK" || echo "ERROR"
+  ;;
+stop)
+  echo "Stopping $NAME..."
+  start-stop-daemon -K -n "$NAME" -o
+  [ $? -eq 0 ] && echo "OK" || echo "ERROR"
+  ;;
+restart)
+  "$0" stop
+  "$0" start
+  ;;
+*)
+  echo "Usage: $0 {start|stop|restart}"
+  exit 1
+esac

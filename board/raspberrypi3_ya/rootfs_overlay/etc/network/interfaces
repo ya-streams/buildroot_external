@@ -1,0 +1,6 @@
+auto lo
+iface lo inet loopback
+auto wlan0
+iface wlan0 inet dhcp
+    udhcpc_opts -T 1 -t 3 -b
+iface default inet dhcp

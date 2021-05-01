@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# Start/stop wpa_supplicant
+#
+
+NAME=wpa_supplicant
+DAEMON=/usr/sbin/$NAME
+CONFIG=/etc/$NAME.conf
+
+[ -f "$CONFIG" ] || exit 0
+
+case "$1" in
+start)
+  echo "Starting $NAME..."
+  start-stop-daemon -S -b -x "$DAEMON" -- -B -Dnl80211 -iwlan0 -c"$CONFIG"
+  [ $? -eq 0 ] && echo "OK" || echo "ERROR"
+  ;;
+stop)
+  echo "Stopping $NAME..."
+  start-stop-daemon -K -n "$NAME" -o
+  [ $? -eq 0 ] && echo "OK" || echo "ERROR"
+  ;;
+restart)
+  "$0" stop
+  "$0" start
+  ;;
+*)
+  echo "Usage: $0 {start|stop|restart}"
+  exit 1
+esac
+

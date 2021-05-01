@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# Start/stop hci
+# hciattach /dev/ttyS0 bcm43xx 921600 noflow -
+
+NAME=bluetoothctl
+DAEMON="/usr/bin/$NAME"
+
+case "$1" in
+start)
+  echo "Starting $NAME..."
+  ${DAEMON} power on && \
+  ${DAEMON} discoverable on
+  [ $? -eq 0 ] && echo "OK" || echo "ERROR"
+  ;;
+stop)
+  echo "Stopping $NAME..."
+  ${DAEMON} discoverable off && \
+  ${DAEMON} power off
+  [ $? -eq 0 ] && echo "OK" || echo "ERROR"
+  ;;
+restart)
+  "$0" stop
+  "$0" start
+  ;;
+*)
+  echo "Usage: $0 {start|stop|restart}"
+  exit 1
+esac
