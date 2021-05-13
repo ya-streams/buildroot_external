@@ -20,4 +20,3 @@ gpu_mem_1024=100
 
 enable_uart=1
 dtparam=audio=on
-#dtoverlay=miniuart-bt
