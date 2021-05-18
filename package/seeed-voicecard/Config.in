@@ -1,0 +1,12 @@
+config BR2_PACKAGE_SEEED_VOICECARD
+	bool "seeed-voicecard"
+	depends on BR2_LINUX_KERNEL
+	depends on BR2_PACKAGE_RPI_FIRMWARE
+	help
+	  Linux kernel modules and device tree overlays for seeed voicecard
+
+comment "seeed-voicecard needs a Linux kernel to be built"
+	depends on !BR2_LINUX_KERNEL
+
+comment "seeed-voicecard needs a RaspberryPi Firmware to be installed"
+	depends on !BR2_PACKAGE_RPI_FIRMWARE

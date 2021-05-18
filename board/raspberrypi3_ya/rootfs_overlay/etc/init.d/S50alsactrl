@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Set alsa controls values
+#
+
+NAME=alsactl
+DAEMON="/usr/bin/$NAME"
+FILE="/etc/asound.state"
+
+case "$1" in
+start)
+  echo "Starting $NAME..."
+  alsactl -f $FILE restore
+  [ $? -eq 0 ] && echo "OK" || echo "ERROR"
+  ;;
+*)
+  echo "Usage: $0 {start}"
+  exit 1
+esac

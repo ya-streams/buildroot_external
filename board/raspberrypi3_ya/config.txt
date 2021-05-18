@@ -20,3 +20,9 @@ gpu_mem_1024=100
 
 enable_uart=1
 dtparam=audio=on
+
+dtparam=i2c_arm=on
+dtoverlay=i2s-mmap
+dtparam=i2s=on
+dtoverlay=seeed-4mic-voicecard
+dtparam=spi=on
