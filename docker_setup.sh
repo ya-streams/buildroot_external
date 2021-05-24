@@ -1,7 +1,6 @@
 DOCKER_IMAGE=ya_streams
 DOCKER_USER=ya
-HOST_SRC=$HOME/work_ssd/ya_streams/src
-
+HOST_SRC="$(pwd)"
 SCRIPT_PATH="`dirname \"$0\"`"
 
 docker_build() {
