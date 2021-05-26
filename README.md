@@ -93,7 +93,8 @@ speaker-test -twav -c2 -l2
 
 Воспроизвести wav-файл:
 ```
-aplay /etc/piano2.wav
+aplay /etc/play_test.wav
+mpg123 /etc/play_test.mp3
 ```
 
 Озвучить текст
