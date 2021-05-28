@@ -2,7 +2,6 @@
 BR2_EXTERNAL="br_external"
 BR2_DL_DIR="$BR2_EXTERNAL/downloads"
 TARGET=""
-DEFAULT_TARGET="raspberrypi3_ya_p1"
 
 function set_target() {
     if [ $# -ne 1 ]; then
@@ -10,13 +9,8 @@ function set_target() {
         return
     fi
 
-    if [ $1 = "default" ]; then
-        TARGET=$DEFAULT_TARGET
-        echo "Set default target: $TARGET"
-    else
-        TARGET=$1
-        echo "Set target: $TARGET"
-    fi
+    TARGET=$1
+    echo "Set target: $TARGET"
 
     BULDROOT_OUTPUT="$BR2_EXTERNAL/output/$TARGET"
     m "${TARGET}_defconfig"

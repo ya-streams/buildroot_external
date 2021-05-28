@@ -35,11 +35,6 @@
 Выбрать цель сборки:
 
     set_target raspberrypi3_ya_p1
-    # или так:
-    set_target default
-
-    # эти команды аналогичны
-    # make ..._defconfig
 
 Запустить сборку:
 
